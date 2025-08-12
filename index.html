@@ -10,7 +10,6 @@
   <meta property="og:image" content="/assets/og-image.jpg">
   <meta property="og:type" content="article">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
   <header class="header">
@@ -28,13 +27,14 @@
       </a>
       <nav class="nav">
         <a href="#tips">Tips</a>
+        <a href="#form">Get Checklist / Contact</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
       <div class="container">
         <div class="hero-grid">
@@ -42,8 +42,8 @@
             <h1>7 Small Home Upgrades That Make Life Easier After 50</h1>
             <p class="sub">Affordable tweaks for safer, more comfortable everyday living—no major renovations required.</p>
             <div class="cta-row">
-              <a class="btn btn-primary" href="#download">Get the Free Checklist (PDF)</a>
-              <a class="btn btn-ghost" href="#tips">Read the Tips</a>
+              <button class="btn btn-primary" onclick="openForm('lead')">Get the Free Checklist (PDF)</button>
+              <button class="btn btn-ghost" onclick="openForm('contact')">Ask a Question</button>
             </div>
             <ul class="trust">
               <li>Clear, practical advice</li>
@@ -58,6 +58,7 @@
       </div>
     </section>
 
+    <!-- TIPS -->
     <section id="tips" class="section container">
       <h2>Simple, low‑cost improvements</h2>
       <div class="cards">
@@ -98,17 +99,20 @@
           <p class="disclosure">Disclosure: We may earn a commission if you buy via links. No extra cost to you.</p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#" aria-label="Learn more about ComfortLift Cushion">Learn more</a>
-            <a class="btn btn-ghost" href="#download">Get the Checklist</a>
+            <button class="btn btn-ghost" onclick="openForm('lead')">Get the Checklist</button>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="download" class="section alt">
+    <!-- UNIVERSAL FORM (single) -->
+    <section id="form" class="section alt">
       <div class="container narrow">
-        <h2>Free 1‑Page Checklist: Home Upgrade Starter Pack</h2>
-        <p>Enter your details and get an instant download link. We’ll also send occasional helpful tips (unsubscribe anytime).</p>
-        <form id="lead-form" class="form" aria-labelledby="download">
+        <h2 id="form-title">Free 1‑Page Checklist: Home Upgrade Starter Pack</h2>
+        <p id="form-sub">Enter your details to get an instant download link. We’ll also send occasional helpful tips (unsubscribe anytime).</p>
+
+        <form id="unified-form" class="form" aria-labelledby="form-title">
+          <input type="hidden" name="source" id="form-source" value="lead">
           <label>
             <span>Name</span>
             <input type="text" name="name" required>
@@ -117,55 +121,30 @@
             <span>Email</span>
             <input type="email" name="email" required>
           </label>
-        <label>
+          <label>
             <span>Phone (optional)</span>
             <input type="tel" name="phone">
           </label>
-          <label>
+          <label id="message-wrap">
             <span>Message (optional)</span>
             <textarea name="message" rows="3" placeholder="What are you planning to upgrade?"></textarea>
           </label>
           <label class="agree">
             <input type="checkbox" required> I agree to the <a href="#privacy">Privacy Policy</a>.
           </label>
-          <button class="btn btn-primary" type="submit">Send & Download</button>
-          <p class="form-note" id="lead-status" role="status" aria-live="polite"></p>
+          <button class="btn btn-primary" type="submit" id="form-submit">Send & Download</button>
+          <p class="form-note" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about" class="section container narrow">
       <h2>About Silver Living Tips</h2>
       <p>We publish practical, accessible ideas that make homes more comfortable and easier to manage—especially for readers over 45. No hype, no medical claims—just simple improvements that help you do more with less effort.</p>
     </section>
 
-    <section id="contact" class="section container narrow">
-      <h2>Contact</h2>
-      <form id="contact-form" class="form">
-        <label>
-          <span>Name</span>
-          <input type="text" name="name" required>
-        </label>
-        <label>
-          <span>Email</span>
-          <input type="email" name="email" required>
-        </label>
-        <label>
-          <span>Phone (optional)</span>
-          <input type="tel" name="phone">
-        </label>
-        <label>
-          <span>Message</span>
-          <textarea name="message" rows="4" required></textarea>
-        </label>
-        <label class="agree">
-          <input type="checkbox" required> I agree to the <a href="#privacy">Privacy Policy</a>.
-        </label>
-        <button class="btn btn-primary" type="submit">Send</button>
-        <p class="form-note" id="contact-status" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-
+    <!-- PRIVACY -->
     <section id="privacy" class="section container narrow">
       <h2>Privacy & Disclosures</h2>
       <p>We use form submissions to send your requested download and occasional newsletters. You can unsubscribe at any time via a link in our emails. If this site includes affiliate links, we may earn a commission at no extra cost to you.</p>
@@ -174,7 +153,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© 2025 Silver Living Tips · <a href="#privacy">Privacy</a> · <a href="#contact">Contact</a></p>
+      <p>© 2025 Silver Living Tips · <a href="#privacy">Privacy</a> · <a href="#form">Contact</a></p>
     </div>
   </footer>
 
